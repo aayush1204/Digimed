@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <style>
+            p {
+                margin-top:100px;
+            }
+        </style>
+    </head>
+    <body style="background-color: #ffffff;">
+            {% load staticfiles %}
+            <img class="a" src="{% static "myapp/DigiMed.jpg" %}" alt="DigiMed Logo" style="height:100px; width:300px; vertical-align: bottom;">
+
+        <hr style="size=100%;">
+        <center>
+        <form method="get" action="{% url 'finalcho' %}">
+            {% csrf_token %}<br>
+            
+            <input type="radio" name="dp" value="doctor">Doctor<br>
+            <input type="radio" name="dp" value="patient">Patient<br>
+            <input type="submit" value="register">  
+        </form>
+        <!-- <a href="{% url 'finalcho'%}">Register Now</a> -->
+        </center>
+        
+
+    </body>
+</html>

@@ -1,0 +1,78 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 190px;
+  position: fixed;
+  z-index: 1;
+
+  background-color: #00aff0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  font-family: Constantia;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #000000;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  margin-top:50px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+
+  <body style="background-color: #ffffff;">
+<img class="a" src="{% static 'myapp/DigiMed.jpg' %}" alt="DigiMed Logo" style="height:100px; width:300px; vertical-align: bottom;">
+<button style="font-size: 19px; color: #00A2E8; margin-top: 25px; margin-bottom: 25px; float: right; border: none; background-color:#ffffff; padding: 16px; font-family: Constantia;"><a href="#Contact">Contact Us</a></button>
+
+<hr style="size:100%; height: 3px; background-color: #00AFF0">
+
+<div class="sidenav">
+  <a href="{% url 'appoint' %}">Appointment</a>
+  <a href="{% url 'records' %}">Medical Records</a>
+
+</div>
+<div class="main">
+<span> Add Medical Record<br></span>
+{{text}}
+<form method="post" name="post" enctype="multipart/form-data">
+  {% csrf_token %}
+{{forminput.as_p}}<br>
+<button type="submit">Upload </button>
+</form>
+
+  <a href="{% url 'fileview'  %}">{{ViewFiles}}</a>
+
+</div>
+<hr style="width:100%; background-color: #00CCCC; height: 3px; margin-top: 30%;">
+
+  <p id="Contact" style=" font-size:16px; text-align: center"> &#128231; : services@digimed.com || &#128222;: 022-28546869<br>
+
+  </p>
+</body>
+</html>

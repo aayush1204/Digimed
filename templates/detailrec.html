@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 290px;
+  position: fixed;
+  z-index: 1;
+
+  background-color: #00aff0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #000000;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-right: 30px; /* Same as the width of the sidenav */
+  font-size: 45px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  font-family: Constantia ;
+  color:#00A2E8;
+
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+
+  <body style="background-color: #ffffff;">
+        {% load staticfiles %}
+        <img class="a" src="{% static "myapp/DigiMed.jpg" %}" alt="DigiMed Logo" style="height:100px; width:300px; vertical-align: bottom;">
+<button style="font-size: 19px; color: #00A2E8; margin-top: 25px; margin-bottom: 25px; float: right; border: none; background-color:#ffffff; padding: 16px; font-family: Constantia;"><a href="#Contact">Contact Us</a></button>
+
+<hr style="size:100%;">
+
+<div class="sidenav">
+    <form method="post" >
+    <a href="{% url 'direct1' %}">Patient List</a> </form>
+    <form method="post">
+    <a href="{% url 'upcapp' %}">Upcoming Appointments</a>
+    </form>
+ 
+</div>
+<!-- <div class ="main" style="margin-top: 17%; margin-left:20%"> -->
+        <div class ="main" style="margin-top: 1%; margin-left:20%">  
+   <right>Welcome Dr. {{docname}}!<br><br><br> </right>
+<!--     
+</div>
+<center>
+<h1>{{s}}</h1>
+{% for i in patients %}
+    <a href="{% url 'det' p=i.pid %}"><h3>{{i.patientname}}<br></h3></a>
+    
+    {% endfor %}
+</center> -->
+<span style=" font-family: Constantia ;
+color:#00A2E8;">Patient Name: </span>{{patient_name}}
+<br>
+
+<span style="color:#00A2E8; font: size 19px;">History</span>
+{% for i in db %}
+<hr>
+<h6>Date- {{i.date}}</h6>
+<br>
+<h6>Filename- {{i.filename}}</h6>
+
+{% endfor %}
+<hr style="width:100%; background-color: #00CCCC; height: 3px; margin-top: 16%;">
+
+  <p id="Contact" style=" font-size:16px; text-align: center"> &#128231; : services@digimed.com || &#128222;: 022-28546869<br>
+
+  </p>
+
+
+
+
+
+   
+</body>
+</html>

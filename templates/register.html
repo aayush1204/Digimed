@@ -1,0 +1,10 @@
+<html>
+    <body>
+        <form method="post">
+            {%csrf_token%}   
+        {{ forminput.as_p }}
+        <button type="submit">Register</button>
+    </form>
+    </body>
+    
+</html>

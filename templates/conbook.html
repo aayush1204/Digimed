@@ -1,0 +1,97 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: "Lato", sans-serif;
+}
+
+.sidenav {
+  height: 100%;
+  width: 190px;
+  position: fixed;
+  z-index: 1;
+font-family:Constantia;
+  background-color: #00aff0;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #000000;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 45%; /* Same as the width of the sidenav */
+  font-size: 23px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+  font-family: Constantia;
+  margin-top: 70px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+</style>
+</head>
+
+  <body style="background-color: #ffffff;">
+<img class="a" src="{% static 'myapp/DigiMed.jpg' %}" alt="DigiMed Logo" style="height:100px; width:300px; vertical-align: bottom;">
+<button class="buttonNew" style="font-size: 19px; color: #00A2E8; margin-top: 25px; margin-bottom: 25px; float: right; border: none; background-color:#ffffff; padding: 16px; font-family: Constantia;"><a href="#Contact">Contact Us</a></button>
+<hr style="size:100%;">
+
+<div class="sidenav">
+  <a href="{% url 'appoint' %}">Appointment</a>
+  <a href="{%url 'records'%}">Medical Records</a>
+
+</div>
+<div class="main">
+
+<!-- {% for i in dc %}
+{{i.timingslot6}}
+{% endfor %} -->
+
+<span style="color:#00A2E8;">Booking Confirmed &#10004</span><br>
+Timeslot:-
+{% for i in dc %}
+{% if i.timingslot1 == 1%}
+<span style="color:#00A2E8;">10:00-11:00</span>
+{% endif %}
+{% if i.timingslot2 == 1%}
+<span style="color:#00A2E8;">11:00-12:00</span>
+{% endif %}
+{% if i.timingslot3 == 1%}
+<span style="color:#00A2E8;">12:00-1:00</span>
+{% endif %}
+{% if i.timingslot4 == 1%}
+<span style="color:#00A2E8;">4:00-5:00</span>
+{% endif %}
+{% if i.timingslot5 == 1%}
+<span style="color:#00A2E8;">5:00-6:00</span>
+{% endif %}
+{% if i.timingslot6 == 1%}
+<span style="color:#00A2E8;">6:00-7:00</span>
+{% endif %}
+<br>
+Date-<span style="color:#00A2E8;"> {{ i.date }}</span>
+{% endfor %}
+
+</div>
+<hr style="width:100%; background-color: #00CCCC; height: 3px; margin-top: 30%;">
+
+  <p id="Contact" style=" font-size:16px; text-align: center"> &#128231; : services@digimed.com || &#128222;: 022-28546869<br>
+
+  </p>
+</body>
+</html>
